@@ -9,7 +9,7 @@ This repository provides a customizable template for building interactive web ap
 - **Modular Structure**: The project is organized into distinct directories such as `components`, `pages`, `assets`, and `utils`, each serving a specific purpose, ensuring that your codebase remains clean and maintainable.
 
 - **Pages**
-The pages directory follows a modular structure, with each page containing its own layout and callbacks. This separation helps keep the codebase organized and makes it easier to add new pages or modify existing ones.
+The pages directory follows a modular structure, with each page containing its own `layout` and `callbacks`. This separation helps keep the codebase organized and makes it easier to add new pages or modify existing ones.
 
 
 - **Asset Management**:
