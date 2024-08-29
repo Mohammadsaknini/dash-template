@@ -32,7 +32,7 @@ The pages directory follows a modular structure, with each page containing its o
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/dash-template.git
+    git clone https://github.com/MohammadSakhnini/dash-template.git
     cd dash-template
     ```
 
