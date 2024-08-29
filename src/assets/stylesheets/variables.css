@@ -1,0 +1,25 @@
+.btn-primary {
+  background-color: #003135;
+  border-color: #003135;
+}
+.btn-primary:hover {
+  background-color: rgba(0, 49, 53, 0.7);
+  border-color: rgba(0, 49, 53, 0.7);
+}
+
+.btn-info {
+  background-color: #0Fa4AF;
+  border-color: #0Fa4AF;
+}
+.btn-info:hover {
+  background-color: rgba(15, 164, 175, 0.7);
+  border-color: rgba(15, 164, 175, 0.7);
+}
+
+.bg-primary {
+  background-color: #003135 !important;
+}
+
+.bg-info {
+  background-color: #0Fa4AF !important;
+}/*# sourceMappingURL=variables.css.map */

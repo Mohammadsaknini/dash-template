@@ -1,0 +1,16 @@
+version: '3.8'
+
+
+services:
+  dash_server:
+    image: dashtemplate:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    container_name: dash_server
+    environment:
+      - HOST=0.0.0.0
+    
+    command: ["poetry", "run", "gunicorn", "--bind", "0.0.0.0:80" ,"app:server","--threads=4"]

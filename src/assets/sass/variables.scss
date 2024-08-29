@@ -1,0 +1,43 @@
+$primary-color: #003135;
+$secondary-color: #024950;
+$tertiary-color: #d7654a;
+$quaternary-color: #0Fa4AF;
+$quinary-color: #AFDDe5;
+
+
+$primary-color-rgb-50: rgba(0, 49, 53, 0.50);
+$secondary-color-rgb-50: rgba(2, 73, 80, 0.50);
+$tertiary-color-rgb-50: rgba(215, 101, 74, 0.50);
+$quaternary-color-rgb-50: rgba(15, 164, 175, 0.50);
+$quinary-color-rgb-50: rgba(175, 221, 229, 0.50);
+
+$primary-color-rgb-70: rgba(0, 49, 53, 0.70);
+$secondary-color-rgb-70: rgba(2, 73, 80, 0.70);
+$tertiary-color-rgb-70: rgba(215, 101, 74, 0.70);
+$quaternary-color-rgb-70: rgba(15, 164, 175, 0.70);
+$quinary-color-rgb-70: rgba(175, 221, 229, 0.70);
+
+//override bootstrap theme colors
+.btn-primary{
+    background-color: $primary-color;
+    border-color: $primary-color;
+    &:hover{
+        background-color: $primary-color-rgb-70;
+        border-color: $primary-color-rgb-70;
+    }
+}
+.btn-info{
+    background-color: $quaternary-color;
+    border-color: $quaternary-color;
+
+    &:hover{
+        background-color: $quaternary-color-rgb-70;
+        border-color: $quaternary-color-rgb-70;
+    }
+}
+.bg-primary{
+    background-color: $primary-color !important;
+}
+.bg-info{
+    background-color: $quaternary-color !important;
+}
