@@ -1,24 +1,52 @@
+from dash import Input, Output, callback, clientside_callback, ClientsideFunction
 from sklearn.datasets import make_moons, make_circles, make_classification
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from dash import Input, Output, callback
 from src.pages.svm_page.figures import *
+import dash_mantine_components as dmc
+from src.configs import TRANSLATE
 from sklearn.svm import SVC
 import numpy as np
 import logging
+import json
 
 logger = logging.getLogger("MyNewApp") # make sure to change the name in logging.conf
-@callback(
-    Output("svm-degree", "disabled"),
-    [Input("svm-kernel", "value")],
+
+# this page is inspired by the following page: https://dash-gallery.plotly.host/dash-svm/
+
+# Show notification when 
+clientside_callback(
+    """function (n) {
+        const query = new URLSearchParams(window.location.search);
+        const lang = query.get("lang") || "en";
+        if (lang === "de") {
+            return [""" + json.dumps(
+                dmc.Notification(action='show', title=TRANSLATE["de"]['Done'], message=TRANSLATE["de"]['Kernel Changed'],
+                                 color='green').to_plotly_json()) + """]
+        }
+        if (lang === "en") { 
+            console.log(lang);
+            return [""" + json.dumps(
+                dmc.Notification(action='show', title=TRANSLATE["en"]['Done'], message=TRANSLATE["en"]['Kernel Changed'],
+                                 color='green').to_plotly_json()) + """]
+        }
+        return window.dash_clientside.no_update;
+    }""",
+    Output("notifcation-container", "children", allow_duplicate=True),
+    Input("dd-svm-kernel", "value"),
+    prevent_initial_call=True
+)
+
+clientside_callback(
+    ClientsideFunction(namespace="svm_page", function_name="disable_slider_param_degree"),
+    Output("slider-svm-degree", "disabled"),
+    Input("dd-svm-kernel", "value"),
     prevent_initial_call=True,
 )
-def disable_slider_param_degree(kernel):
-    return kernel != "poly"
 
 @callback(
-    Output("svm-gamma", "disabled"),
-    [Input("svm-kernel", "value")],
+    Output("slider-svm-gamma", "disabled"),
+    [Input("dd-svm-kernel", "value")],
     prevent_initial_call=True,
 
 )
@@ -26,17 +54,17 @@ def disable_slider_param_gamma_coef(kernel):
     return kernel not in ["rbf", "poly", "sigmoid"]
 
 @callback(
-        Output("svm-plot", "figure"),
-        Output("svm-roc", "figure"),
-        Output("svm-cm", "figure"),
+        Output("fig-svm-plot", "figure"),
+        Output("fig-svm-roc", "figure"),
+        Output("fig-svm-cm", "figure"),
     [
-        Input("svm-kernel", "value"),
-        Input("svm-degree", "value"),
-        Input("svm-c", "value"),
-        Input("svm-gamma", "value"),
-        Input("svm-dataset", "value"),
-        Input("svm-noise", "value"),
-        Input("svm-n-samples", "value"),
+        Input("dd-svm-kernel", "value"),
+        Input("slider-svm-degree", "value"),
+        Input("slider-svm-c", "value"),
+        Input("slider-svm-gamma", "value"),
+        Input("dd-svm-dataset", "value"),
+        Input("slider-svm-noise", "value"),
+        Input("slider-svm-n-samples", "value"),
     ],
 )
 def update_svm_graph(

@@ -10,7 +10,7 @@ register_page(
     name=f"{APP_NAME}",
 )
 
-# inspired by https://dash.gallery/dash-svm/
+# this page is inspired by the following page: https://dash-gallery.plotly.host/dash-svm
 def layout(**kwargs):
     lang = kwargs.get("lang", "en")  # for translation
     return dbc.Container(
@@ -21,7 +21,7 @@ def layout(**kwargs):
                         [
                             NamedComponent(
                                 dcc.Dropdown(
-                                    id="svm-dataset",
+                                    id="dd-svm-dataset",
                                     options=[
                                         {"label": TRANSLATE[lang]["moons"], "value": "moons"},
                                         {"label": TRANSLATE[lang]["circles"], "value": "circles"},
@@ -37,7 +37,7 @@ def layout(**kwargs):
                             className="mt-3"),
                             NamedComponent(
                                 dcc.Dropdown(
-                                    id="svm-kernel",
+                                    id="dd-svm-kernel",
                                     options=[
                                         {"label": "RBF", "value": "rbf"},
                                         {"label": "Linear", "value": "linear"},
@@ -50,7 +50,7 @@ def layout(**kwargs):
                             className="mt-3"),
                             NamedComponent(
                                 dcc.Slider(
-                                    id="svm-n-samples",
+                                    id="slider-svm-n-samples",
                                     min=100,
                                     max=500,
                                     step=100,
@@ -61,7 +61,7 @@ def layout(**kwargs):
                             className="mt-3"),
                             NamedComponent(
                                 dcc.Slider(
-                                    id="svm-noise",
+                                    id="slider-svm-noise",
                                     min=0,
                                     max=1,
                                     step=0.1,
@@ -72,7 +72,7 @@ def layout(**kwargs):
                             className="mt-3"),
                             NamedComponent(
                                 dcc.Slider(
-                                    id="svm-gamma",
+                                    id="slider-svm-gamma",
                                     min=0.1,
                                     max=10,
                                     step=0.1,
@@ -83,7 +83,7 @@ def layout(**kwargs):
                             className="mt-3"),
                             NamedComponent(
                                 dcc.Slider(
-                                    id="svm-c",
+                                    id="slider-svm-c",
                                     min=0.1,
                                     max=10,
                                     step=0.1,
@@ -94,7 +94,7 @@ def layout(**kwargs):
                             className="mt-3"),
                             NamedComponent(
                                 dcc.Slider(
-                                    id="svm-degree",
+                                    id="slider-svm-degree",
                                     min=2,
                                     max=10,
                                     value=3,
@@ -112,14 +112,14 @@ def layout(**kwargs):
                     ),
                     dbc.Col(
                         [
-                            dcc.Graph(id="svm-plot", config=GRAPH_CONFIG),
+                            dcc.Graph(id="fig-svm-plot", config=GRAPH_CONFIG),
                         ],
                         md=6,
                     ),
                     dbc.Col(
                         [
-                            dcc.Graph(id="svm-roc", config=GRAPH_CONFIG),
-                            dcc.Graph(id="svm-cm", config=GRAPH_CONFIG),
+                            dcc.Graph(id="fig-svm-roc", config=GRAPH_CONFIG),
+                            dcc.Graph(id="fig-svm-cm", config=GRAPH_CONFIG),
                         ],
                         md=4,
                     ),

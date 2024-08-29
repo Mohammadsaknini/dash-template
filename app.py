@@ -84,6 +84,8 @@ def display_page(pathname, children):
         return [*children[:4], dbc.Spinner(page_container, fullscreen=True, color="info", delay_show=100)]
     else:
         raise PreventUpdate
+    
+    
 server = app.server
 if __name__ == '__main__':
     logger.info(f"Starting {APP_NAME}")

@@ -489,3 +489,13 @@
  .single-pricing-white h1{color:#fff;}
  .single-pricing-white h5{color:#fff;}
 }
+
+#notifcation-provider:first-child{
+  z-index: 1000;
+  position: fixed !important;
+  top: 3em !important;
+  right: 1em !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1em !important;
+}
