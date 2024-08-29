@@ -2,7 +2,7 @@
 name = "dash-template"
 version = "0.1.0"
 description = ""
-authors = ["Mohammad Saknini <mohammad.saknini@gmail.com>"]
+authors = ["Mohammad Saknini <mohammadsaknini@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
